@@ -23,7 +23,7 @@ const SalomoLoginPage = () => {
       [name]: value
     }));
   };
-
+//helloo
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
