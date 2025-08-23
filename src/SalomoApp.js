@@ -2,23 +2,22 @@ import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star, MapPin } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-
 const SalomoApp = () => {
   const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroSlides = [
     {
-      image: "https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1200&q=80",
-      alt: "Professional hair styling"
+      image: "/images/1.jpg",
+      alt: "Japanese professional hair styling"
     },
     {
-      image: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80",
-      alt: "Salon interior"
+      image: "/images/2.jpg",
+      alt: "Japanese salon interior"
     },
     {
-      image: "https://images.unsplash.com/photo-1582095133179-bfd08e2fc6b3?auto=format&fit=crop&w=1200&q=80",
-      alt: "Hair treatment"
+      image: "/images/3.jpg",
+      alt: "Japanese hair treatment"
     }
   ];
 
@@ -70,15 +69,16 @@ const SalomoApp = () => {
                 お客様が希望金額とメニューを投稿。美容師・マツエク・ネイルがオファーして、最短でマッチング。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-              <button
-                onClick={() => navigate('/post')}
-              className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold"
-           >
-               お気軽として投稿 →
-             </button>
-                <button 
-                onClick={() => navigate('/requests')}
-                className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold">
+                <button
+                  onClick={() => navigate('/post')}
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold"
+                >
+                  お気軽として投稿 →
+                </button>
+                <button
+                  onClick={() => navigate('/requests')}
+                  className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold"
+                >
                   美容師として求人を見る
                 </button>
               </div>

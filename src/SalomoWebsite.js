@@ -52,20 +52,6 @@ export default function SalomoWebsite() {
                   <option value="30000">〜30,000円</option>
                 </select>
               </div>
-
-              {/* Other Details */}
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  その他
-                </label>
-                <textarea
-                  rows={6}
-                  placeholder="髪質・長さ、希望スタイル、こだわり等"
-                  className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
-                  value={details}
-                  onChange={(e) => setDetails(e.target.value)}
-                />
-              </div>
             </div>
 
             {/* Right Column */}
@@ -109,6 +95,20 @@ export default function SalomoWebsite() {
                   />
                 </div>
               </div>
+            </div>
+
+            {/* Other Details → moved outside columns and spans 2 */}
+            <div className="col-span-2">
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                その他
+              </label>
+              <textarea
+                rows={6}
+                placeholder="髪質・長さ、希望スタイル、こだわり等"
+                className="w-full px-4 py-3 border border-gray-200 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                value={details}
+                onChange={(e) => setDetails(e.target.value)}
+              />
             </div>
           </div>
 
