@@ -161,7 +161,7 @@ const SalomoApp = () => {
           <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-700 flex items-center justify-center mr-4">
             <span className="text-white text-base font-bold">{step.number}</span>
           </div>
-          <span className={`text-base font-bold ${idx === 0 ? "text-green-900" : "text-gray-900"}`}>{step.text}</span>
+          <span className={`text-base font-bold ${idx === 0 ? "text-gray-900" : "text-gray-900"}`}>{step.text}</span>
         </div>
       ))}
     </div>
