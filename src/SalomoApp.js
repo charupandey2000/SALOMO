@@ -28,7 +28,7 @@ const SalomoApp = () => {
       rating: 4.9,
       price: "¥3,000~",
       location: "渋谷",
-      image: "https://images.unsplash.com/photo-1594824388853-e4d2b4dd4a6d?auto=format&fit=crop&w=300&q=80"
+      image: "/images/4.jpg"
     },
     {
       name: "佐藤 健太",
@@ -36,7 +36,7 @@ const SalomoApp = () => {
       rating: 4.8,
       price: "¥2,500~",
       location: "新宿",
-      image: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=300&q=80"
+      image: "/images/5.jpg"
     },
     {
       name: "鈴木 あい",
@@ -44,7 +44,7 @@ const SalomoApp = () => {
       rating: 5.0,
       price: "¥4,000~",
       location: "表参道",
-      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=300&q=80"
+      image: "/images/6.jpg"
     }
   ];
 
