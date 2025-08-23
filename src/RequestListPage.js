@@ -76,7 +76,7 @@ function RequestCard({ name, amount, date, time, title, note, offerCount }) {
   );
 }
 
-// Main Request List Page (No Header or Footer)
+// Main Request List Page
 export default function RequestListPage() {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col">
@@ -88,13 +88,14 @@ export default function RequestListPage() {
             placeholder="エリアやサービスで検索"
           />
         </div>
-        {/* REQUEST CARDS */}
-        <div className="flex flex-wrap justify-center gap-10">
+        {/* Cards row: 3 columns on desktop, 1 column on mobile */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10 justify-items-center">
           {requests.map((req) => (
             <RequestCard key={req.id} {...req} />
           ))}
         </div>
       </main>
+      {/* Footer can be added here if needed */}
     </div>
   );
 }

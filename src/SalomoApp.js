@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, Star, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 
 const SalomoApp = () => {
-  const navigate = useNavigate();
   const [currentSlide, setCurrentSlide] = useState(0);
 
   const heroSlides = [
@@ -28,7 +26,7 @@ const SalomoApp = () => {
       rating: 4.9,
       price: "¥3,000~",
       location: "渋谷",
-      image: "/images/4.jpg"
+      image: "https://images.unsplash.com/photo-1594736797933-d0501ba2fe65?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "佐藤 健太",
@@ -36,7 +34,7 @@ const SalomoApp = () => {
       rating: 4.8,
       price: "¥2,500~",
       location: "新宿",
-      image: "/images/5.jpg"
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     },
     {
       name: "鈴木 あい",
@@ -44,9 +42,25 @@ const SalomoApp = () => {
       rating: 5.0,
       price: "¥4,000~",
       location: "表参道",
-      image: "/images/6.jpg"
+      image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"
     }
   ];
+
+  const steps = [
+    {
+      number: 1,
+      text: "希望金額・メニュー・日程を投稿",
+    },
+    {
+      number: 2,
+      text: "美容師からオファーが届く",
+    },
+    {
+      number: 3,
+      text: "マッチング（有料リクエストのみ¥500）",
+    },
+  ];
+  
 
   const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % heroSlides.length);
   const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + heroSlides.length) % heroSlides.length);
@@ -69,19 +83,34 @@ const SalomoApp = () => {
                 お客様が希望金額とメニューを投稿。美容師・マツエク・ネイルがオファーして、最短でマッチング。
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button
-                  onClick={() => navigate('/post')}
-                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 rounded-lg font-semibold"
-                >
-                  お気軽として投稿 →
-                </button>
-                <button
-                  onClick={() => navigate('/requests')}
-                  className="border border-gray-300 hover:border-gray-400 text-gray-700 px-8 py-3 rounded-lg font-semibold"
-                >
-                  美容師として求人を見る
-                </button>
-              </div>
+  {/* First button: gradient, pink on hover */}
+  <button
+    className="bg-gradient-to-r from-green-400 to-blue-500 
+    hover:from-pink-400 hover:to-pink-500
+    text-white px-8 py-3 rounded-full font-semibold shadow-lg
+    transition-all duration-300 ease-in-out transform hover:scale-105"
+
+  >
+    お気軽として投稿 →
+  </button>
+  
+  {/* Second button: neutral, pink gradient on hover/focus/active */}
+  <button
+    className="bg-white  text-gray-900 border border-gray-200
+               px-8 py-3 rounded-full font-semibold shadow-lg
+               transition-all duration-300 ease-in-out transform
+               hover:scale-105
+               hover:bg-gradient-to-r hover:from-pink-400 hover:to-pink-500
+               hover:text-white
+               focus:bg-gradient-to-r focus:from-pink-400 focus:to-pink-500
+               focus:text-white
+               active:bg-gradient-to-r active:from-pink-500 active:to-pink-600
+               active:text-white"
+  >
+    美容師として求人を見る
+  </button>
+</div>
+
               <p className="text-sm text-gray-500 mt-4">
                 登録リクエストの数：マッチング数1000（Stripe決済）
               </p>
@@ -120,72 +149,118 @@ const SalomoApp = () => {
       </section>
 
       {/* How It Works Section */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12">3つの簡単ステップ</h2>
-          {/* 3 steps omitted for brevity */}
+      <section className="py-8 bg-white">
+  <div className="max-w-5xl mx-auto">
+    <h2 className="text-2xl font-bold text-gray-900 mb-5">3つの簡単ステップ</h2>
+    <div className="flex flex-col md:flex-row gap-4">
+      {steps.map((step, idx) => (
+        <div
+          key={idx}
+          className="flex items-center bg-white border border-gray-200 rounded-xl px-6 py-4 min-h-[64px] shadow-sm flex-1"
+        >
+          <div className="flex-shrink-0 w-8 h-8 rounded-full bg-green-700 flex items-center justify-center mr-4">
+            <span className="text-white text-base font-bold">{step.number}</span>
+          </div>
+          <span className={`text-base font-bold ${idx === 0 ? "text-green-900" : "text-gray-900"}`}>{step.text}</span>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* Featured Stylists Section */}
-      <section className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">人気の美容師</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {stylists.map((stylist, index) => (
-              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden">
-                <img src={stylist.image} alt={stylist.name} className="w-full h-48 object-cover" />
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-3">
-                    <h3 className="text-xl font-bold text-gray-900">{stylist.name}</h3>
-                    <div className="flex items-center">
-                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                      <span className="text-sm text-gray-600 ml-1">{stylist.rating}</span>
-                    </div>
-                  </div>
-                  <div className="flex items-center mb-3">
-                    <MapPin className="w-4 h-4 text-gray-400 mr-1" />
-                    <span className="text-sm text-gray-600">{stylist.location}</span>
-                  </div>
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {stylist.specialties.map((specialty, idx) => (
-                      <span key={idx} className="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full">
-                        {specialty}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-lg font-bold text-green-600">{stylist.price}</span>
-                    <button className="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-lg text-sm font-semibold">
-                      予約する
-                    </button>
-                  </div>
-                </div>
-              </div>
+
+           {/* Ranking System Section */}
+      
+      <section className="py-8 bg-white">
+  <div className="max-w-5xl mx-auto border border-gray-200 rounded-2xl bg-white shadow px-6 py-6">
+    <h2 className="text-2xl font-bold text-gray-900 mb-2">顧客ランクシステム</h2>
+    <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
+      {[
+        {
+          label: "S",
+          stars: 5,
+          text: "¥8,000以上＆リピート希望"
+        },
+        {
+          label: "A",
+          stars: 4,
+          text: "¥5,000〜¥8,000"
+        },
+        {
+          label: "B",
+          stars: 3,
+          text: "¥1,000〜¥5,000（モデル）"
+        },
+        {
+          label: "C",
+          stars: 2,
+          text: "無料リクエスト"
+        },
+      ].map(({label, stars, text}) => (
+        <div
+          key={label}
+          className="flex-1 bg-white rounded-xl border border-gray-100 shadow-sm px-6 py-5 flex flex-col justify-center"
+        >
+          <span className="text-xl font-bold text-gray-900 mb-2">{label}</span>
+          <div className="flex items-center mb-2">
+            {[...Array(stars)].map((_, i) => (
+              <Star key={i} className="w-5 h-5 text-yellow-400 fill-current" />
             ))}
           </div>
+          <p className="text-sm text-gray-600">{text}</p>
         </div>
-      </section>
+      ))}
+    </div>
+  </div>
+</section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-green-500">
-        <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            今すぐ理想の美容師を見つけよう
-          </h2>
-          <p className="text-green-100 text-lg mb-8">
-            あなたの希望に合った美容師が必ず見つかります。まずは無料で投稿してみませんか？
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white hover:bg-gray-100 text-green-500 px-8 py-3 rounded-lg font-semibold">
-              無料で投稿する
-            </button>
-            <button className="border border-white hover:bg-white hover:text-green-500 text-white px-8 py-3 rounded-lg font-semibold">
-              美容師として登録
-            </button>
+     
+
+
+      
+
+      {/* Features Section */}
+      <section className="py-8 bg-white">
+  <div className="max-w-5xl mx-auto border border-gray-200 rounded-2xl bg-white shadow px-8 py-8">
+    <div className="flex flex-col md:flex-row items-center md:items-start justify-between gap-8">
+      {/* Left section: Title, sous-title, and feature list */}
+      <div className="flex-1 min-w-[250px]">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">今すぐ始めましょう</h2>
+        <p className="mb-3 text-gray-700 text-sm">
+          投稿は無料。マッチした場合のみ¥500（税込）
+        </p>
+        <div>
+          <div className="flex items-center text-green-700 text-sm mb-1">
+            <span className="mr-2">✔</span>LINEで簡単メッセージ
+          </div>
+          <div className="flex items-center text-green-700 text-sm mb-1">
+            <span className="mr-2">✔</span>Stripeで安全決済
+          </div>
+          <div className="flex items-center text-green-700 text-sm">
+            <span className="mr-2">✔</span>履歴はスプレッドシートで管理
           </div>
         </div>
-      </section>
+      </div>
+      {/* Right section: Buttons, vertically stacked on mobile, side-by-side on desktop */}
+      <div className="flex flex-col md:flex-row gap-4 md:items-center">
+        <button
+          className="bg-gradient-to-r from-green-400 to-blue-500 text-white px-8 py-3 rounded-full font-semibold shadow-lg transition-all duration-300 ease-in-out min-w-[180px]"
+        >
+          お客様として投稿
+        </button>
+        <button
+          className="bg-white border border-green-400 text-gray-900 px-8 py-3 rounded-full font-semibold shadow transition-all min-w-[180px]"
+        >
+          美容師として求人を見る
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+     
     </div>
   );
 };

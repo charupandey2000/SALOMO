@@ -38,7 +38,7 @@ export default function Header() {
   function handleLogout() {
     // Add your logout logic here!
     // Then redirect:
-    navigate("/login");
+    navigate("/");
   }
 
   return (
