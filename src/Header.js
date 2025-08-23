@@ -46,17 +46,19 @@ export default function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <div className="flex items-center">
-            <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center mr-2">
-              <span className="text-white text-sm font-bold">✕</span>
-            </div>
-            <span className="text-xl font-bold">SALOMO</span>
-          </div>
+          {/* Logo */}
+<Link to="/home" className="flex items-center cursor-pointer">
+  <div className="w-8 h-8 bg-black rounded-full flex items-center justify-center mr-2">
+    <span className="text-white text-sm font-bold">✕</span>
+  </div>
+  <span className="text-xl font-bold">SALOMO</span>
+</Link>
+
 
           {/* Nav Links */}
           <div className="hidden md:flex space-x-8">
             <Link
-              to="/"
+              to="/home"
               className={`text-gray-700 hover:text-gray-900 ${isActive("/") ? "text-blue-600 bg-blue-50 px-3 py-1 rounded" : ""}`}
             >
               ホーム

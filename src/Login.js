@@ -29,7 +29,7 @@ const SalomoLoginPage = () => {
     console.log('Form submitted:', formData);
 
     if (activeTab === 'signin') {
-      navigate('/');
+      navigate('/home');
     }
   };
 

@@ -13,7 +13,8 @@ export default function App() {
     <Routes>
       {/* Routes with Header and Footer */}
       <Route path="/" element={<Layout />}>
-        <Route index element={<SalomoApp />} />
+        {/* <Route index element={<SalomoApp />} /> */}
+        <Route path="home" element={<SalomoApp />} />
         <Route path="post" element={<SalomoWebsite />} />
         <Route path="requests" element={<RequestListPage />} />
         <Route path="contact" element={<ContactPage />} />
@@ -21,7 +22,8 @@ export default function App() {
       </Route>
 
       {/* Login route WITHOUT header/footer */}
-      <Route path="/login" element={<Login />} />
+      <Route index element={<Login />} />
+      {/* <Route path="/login" element={<Login />} /> */}
     </Routes>
   );
 }
