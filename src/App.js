@@ -1,29 +1,53 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
 import Layout from './Layout';
 import SalomoApp from './SalomoApp';
 import SalomoWebsite from './SalomoWebsite';
 import RequestListPage from './RequestListPage';
 import ContactPage from './ContactPage';
 import CompanyInfoPage from './CompanyInfoPage';
-import Login from './Login';  // Import your Login page
+import Login from './Login';
 
-export default function App() {
-  return (
-    <Routes>
-      {/* Routes with Header and Footer */}
-      <Route path="/" element={<Layout />}>
-        {/* <Route index element={<SalomoApp />} /> */}
-        <Route path="home" element={<SalomoApp />} />
-        <Route path="post" element={<SalomoWebsite />} />
-        <Route path="requests" element={<RequestListPage />} />
-        <Route path="contact" element={<ContactPage />} />
-        <Route path="info" element={<CompanyInfoPage />} />
-      </Route>
+// A reusable delay loader for spinner effect
+const delayLoader = async () => {
+  await new Promise(resolve => setTimeout(resolve, 1500)); // 1.5s delay
+  return null;
+};
 
-      {/* Login route WITHOUT header/footer */}
-      <Route index element={<Login />} />
-      {/* <Route path="/login" element={<Login />} /> */}
-    </Routes>
-  );
-}
+export default [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { 
+        path: 'home', 
+        element: <SalomoApp />,
+        loader: delayLoader
+      },
+      { 
+        path: 'post', 
+        element: <SalomoWebsite />,
+        loader: delayLoader
+      },
+      { 
+        path: 'requests', 
+        element: <RequestListPage />,
+        loader: delayLoader
+      },
+      { 
+        path: 'contact', 
+        element: <ContactPage />,
+        loader: delayLoader
+      },
+      { 
+        path: 'info', 
+        element: <CompanyInfoPage />,
+        loader: delayLoader
+      },
+    ]
+  },
+  { 
+    index: true, 
+    element: <Login />,
+    loader: delayLoader
+  },
+  // Optionally add loader to login route as well if you want spinner there
+];

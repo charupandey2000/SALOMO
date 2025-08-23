@@ -1,18 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import App from './App';
+import routes from './App';  // <--- now importing your new routes array!
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom'; // ← add this
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const router = createBrowserRouter(routes);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter> {/* ← wrap App with BrowserRouter */}
-      <App />
-    </BrowserRouter>
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
 
 reportWebVitals();
-
