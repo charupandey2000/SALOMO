@@ -60,7 +60,7 @@ const SalomoApp = () => {
     <div className="min-h-screen bg-gray-50">
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-green-50 to-blue-50 py-16">
+      <section className="bg-gradient-to-r from-blue-100 via-white to-pink-100 py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>

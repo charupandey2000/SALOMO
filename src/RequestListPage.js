@@ -75,17 +75,17 @@ export default function RequestList() {
               <span className="absolute -top-2 right-6 bg-blue-500 text-white rounded-full text-xs px-3 py-1 font-bold shadow whitespace-nowrap z-10">
                 オファー数: {req.offerCount}
               </span>
-              <div className="w-20 h-20 rounded-full bg-gray-100 flex items-center justify-center text-4xl text-gray-300 shadow z-0">
-                <svg className="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <circle cx="12" cy="8" r="4" stroke="currentColor" strokeWidth="2" />
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M6 22v-2a4 4 0 014-4h0a4 4 0 014 4v2"
-                  />
-                </svg>
-              </div>
+              <div className="w-20 h-20 flex items-center justify-center">
+  <svg viewBox="0 0 40 40" className="w-full h-full">
+    {/* Background */}
+    <circle cx="20" cy="20" r="20" fill="#eeeeee" />
+    {/* Shoulders/body - touches bottom edge */}
+    <ellipse cx="20" cy="30.5" rx="13" ry="8.5" fill="#bdbdbd" />
+    {/* Head - with gap above shoulders, not touching top */}
+    <circle cx="20" cy="13" r="7" fill="#bdbdbd" />
+  </svg>
+</div>
+
             </div>
 
             <StarRating />
